@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameAudio test</title>
+<style>
+  body { font: 15px/1.4 monospace; background: #1b1d2b; color: #e8e8f0; margin: 0; padding: 12px 16px 40px; }
+  h2 { font-size: 14px; margin: 18px 0 8px; color: #ffd166; }
+  button { font: inherit; min-height: 44px; min-width: 44px; margin: 3px; padding: 6px 12px;
+           background: #2f3350; color: #fff; border: 1px solid #5a6094; border-radius: 6px; }
+  button:active, button.on { background: #ef476f; }
+  input, select { font: inherit; min-height: 40px; padding: 4px 8px; margin: 3px; }
+  input[type=text] { width: 90%; max-width: 420px; }
+  #log { color: #9fd; min-height: 1.4em; }
+</style>
+</head>
+<body>
+<h1 style="font-size:17px">GameAudio test page</h1>
+<div id="log">Tap any button (first tap unlocks audio).</div>
+
+<h2>Music (crossfades)</h2>
+<div id="music"></div>
+
+<h2>SFX</h2>
+<div id="sfx"></div>
+
+<h2>Voices</h2>
+<div>
+  <input id="txt" type="text" value="Hello! Welcome aboard, are you ready to fly to Tenerife?">
+  <select id="voice"></select>
+  <button id="speakBtn">Speak</button>
+</div>
+<div id="voices"></div>
+
+<h2>Master</h2>
+<button id="mute">Mute: off</button>
+
+<script src="audio.js"></script>
+<script>
+(function () {
+  var A = GameAudio, log = document.getElementById('log');
+  function say(s) { log.textContent = s; }
+  function mk(parent, label, fn) {
+    var b = document.createElement('button');
+    b.textContent = label;
+    b.addEventListener('click', function () { A.unlock(); fn(b); });
+    document.getElementById(parent).appendChild(b);
+    return b;
+  }
+  var scenes = ['title','taxiA','taxiB','checkin','gate','plane','arrival','ending','rental','airbnb','pool'];
+  scenes.forEach(function (s) { mk('music', s, function () { A.music(s); say('music: ' + s); }); });
+  mk('music', 'silence (null)', function () { A.music(null); say('music: null'); });
+
+  var names = 'tap select confirm back dialog_open honk engine_start engine_loop_start engine_loop_stop door pickup bump coin bag_drop stamp boarding_chime plane_takeoff plane_land ding pour sip cheer fanfare step key_jingle car_unlock car_door car_start splash cannonball water_loop_start water_loop_stop goat cicada_burst'.split(' ');
+  names.forEach(function (n) { mk('sfx', n, function () { A.sfx(n); say('sfx: ' + n); }); });
+
+  var voices = 'narrator driver clerk attendant a_adult1 a_adult2 a_kid1 a_kid2 b_adult1 b_adult2 b_kid1 b_kid2 rental_agent'.split(' ');
+  var sel = document.getElementById('voice'), txt = document.getElementById('txt');
+  voices.forEach(function (v) {
+    var o = document.createElement('option'); o.value = o.textContent = v; sel.appendChild(o);
+    mk('voices', v, function () { sel.value = v; var ms = A.speak(v, txt.value); say('speak ' + v + ' -> ' + ms + ' ms'); });
+  });
+  document.getElementById('speakBtn').addEventListener('click', function () {
+    A.unlock(); var ms = A.speak(sel.value, txt.value); say('speak ' + sel.value + ' -> ' + ms + ' ms');
+  });
+  var mb = document.getElementById('mute');
+  mb.addEventListener('click', function () {
+    A.unlock(); A.setMuted(!A.isMuted()); mb.textContent = 'Mute: ' + (A.isMuted() ? 'on' : 'off');
+  });
+})();
+</script>
+</body>
+</html>

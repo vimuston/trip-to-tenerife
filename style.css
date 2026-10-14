@@ -1,0 +1,74 @@
+/* Tenerife Taxi Quest - page + CRT overlay */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; height: 100%; background: #0b0d17; overflow: hidden; }
+body {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  color: #fff; user-select: none; -webkit-user-select: none;
+  overscroll-behavior: none;
+}
+#app {
+  height: 100vh; height: 100dvh; width: 100vw;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+#stage {
+  position: relative; width: 360px; height: 640px; overflow: hidden;
+  background: #000; touch-action: none; cursor: pointer;
+  border-radius: 7% / 4%;                      /* curved CRT corners */
+  box-shadow: 0 0 0 3px #1b1d2b, 0 0 24px rgba(120, 160, 255, .25), inset 0 0 40px rgba(0, 0, 0, .6);
+}
+#screen { position: absolute; inset: 0; }
+#game { position: absolute; inset: 0; display: block; width: 100%; height: 100%; image-rendering: pixelated; image-rendering: crisp-edges; }
+/* soft bloom: a tiny blurred copy of the frame screened over the picture (CRT setting) */
+#bloom { position: absolute; inset: 0; width: 100%; height: 100%; filter: blur(2px) brightness(1.25); mix-blend-mode: screen; opacity: .14; pointer-events: none; }
+#stage.crt-off #bloom { display: none; }
+.crt { position: absolute; inset: 0; pointer-events: none; }
+.scan {
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, .16) 2px, rgba(0, 0, 0, .16) 3px);
+  mix-blend-mode: multiply;
+  animation: flicker 5s infinite;
+}
+.vig {
+  background:
+    radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .55) 100%),
+    linear-gradient(115deg, rgba(255, 255, 255, .06) 0, rgba(255, 255, 255, 0) 30%);
+  box-shadow: inset 0 0 18px 4px rgba(0, 0, 0, .55);
+  border-radius: inherit;
+}
+@keyframes flicker { 0%, 100% { opacity: .95; } 50% { opacity: 1; } 93% { opacity: .88; } }
+#stage.crt-off .crt { display: none; }
+#stage.crt-off { border-radius: 0; box-shadow: 0 0 0 3px #1b1d2b; }
+
+#bar { display: flex; gap: 10px; height: 46px; align-items: center; justify-content: center; }
+/* no spare room under the picture: float a small settings button over the corner instead */
+#bar.floating { position: fixed; left: 6px; top: calc(6px + env(safe-area-inset-top)); height: auto; z-index: 5; opacity: .6; }
+#bar.floating button { min-width: 0; min-height: 36px; padding: 0 8px; font-size: 7px; }
+button {
+  min-width: 120px; min-height: 44px; padding: 0 12px;
+  font: 9px "Press Start 2P", "Courier New", monospace; color: #fff;
+  background: linear-gradient(#3347d8, #101a78); border: 2px solid #fff; border-radius: 6px;
+  cursor: pointer; touch-action: manipulation;
+}
+button:active { transform: translateY(1px); filter: brightness(1.2); }
+
+/* settings panel (opened by the gear button) */
+#settings {
+  position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 10, .7);
+}
+#settings[hidden] { display: none; }
+#settings .panel {
+  display: flex; flex-direction: column; gap: 12px; padding: 18px; width: min(86vw, 340px);
+  background: linear-gradient(#2a3cc8, #0a1060); border: 3px solid #fff; border-radius: 10px;
+}
+#settings h2 { margin: 0 0 4px; font-size: 12px; text-align: center; color: #ffe27a; }
+#settings button { min-height: 52px; width: 100%; }
+
+/* landscape phones: the game is a portrait game, hint to rotate */
+body.landscape #app::before, body.landscape #app::after {
+  content: "KÄÄNNÄ PUHELIN PYSTYYN"; position: fixed; top: 50%; width: 120px; text-align: center;
+  font: 8px/1.8 "Press Start 2P", monospace; color: #ffe27a; opacity: .85; pointer-events: none;
+  text-shadow: 0 0 6px rgba(255, 226, 122, .5);
+}
+body.landscape #app::before { left: 8px; transform: translateY(-50%); }
+body.landscape #app::after  { right: 8px; transform: translateY(-50%); }

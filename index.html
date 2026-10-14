@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d17">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Trip to Tenerife</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <div id="screen">
+      <canvas id="game" width="180" height="320"></canvas>
+      <canvas id="bloom" width="60" height="107"></canvas>
+    </div>
+    <div class="crt scan"></div>
+    <div class="crt vig"></div>
+  </div>
+  <div id="bar">
+    <button id="btnGear" type="button" aria-label="Asetukset">&#9881; ASETUKSET</button>
+  </div>
+  <div id="settings" hidden>
+    <div class="panel">
+      <h2 id="settingsTitle">ASETUKSET</h2>
+      <button id="optSound" type="button">ÄÄNI: PÄÄLLÄ</button>
+      <button id="optCrt" type="button">CRT: PÄÄLLÄ</button>
+      <button id="optStyle" type="button" hidden>TYYLI: STARDEW</button>
+      <button id="optGrade" type="button" hidden>VÄRIT: NORMAALI</button>
+      <button id="optCtl" type="button">OHJAUS: OHJAUSSAUVA</button>
+      <button id="optClose" type="button">SULJE</button>
+    </div>
+  </div>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="gbFilter" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.53 0.8 0.27 0 -0.12  0.53 0.8 0.27 0 -0.12  0.53 0.8 0.27 0 -0.12  0 0 0 1 0"/><feComponentTransfer><feFuncR type="discrete" tableValues="0.059 0.188 0.545 0.608"/><feFuncG type="discrete" tableValues="0.22 0.384 0.675 0.737"/><feFuncB type="discrete" tableValues="0.059 0.188 0.059 0.059"/></feComponentTransfer></filter></svg>
+<script src="config.js"></script>
+<script src="audio.js"></script>
+<script src="art_hand.js"></script>
+<script src="title_neon.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
