@@ -1,0 +1,14 @@
+# generated art working files (large, reproducible with art/gen_*.py)
+art/cand/
+art/raw/
+art/styles/
+art/model_eval/
+art/*.png
+art/*.log
+art/*.flag
+art/__pycache__/
+*.pyc
+# editor / OS
+.vscode/
+.DS_Store
+Thumbs.db

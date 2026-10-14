@@ -1,0 +1,16 @@
+[
+ {
+  "name": "airbnb_house",
+  "out": [
+   96,
+   80
+  ],
+  "colors": 28,
+  "gen": [
+   1216,
+   1024
+  ],
+  "bgtext": ", on a plain solid flat dark navy blue background, isolated, centered",
+  "prompt": "Stardew Valley style, a whitewashed Canarian villa front view with a terracotta tile roof, a clearly visible wooden front door in the middle, two windows with blue shutters, a palm tree beside it, small terrace, single subject only, clean flat colours"
+ }
+]

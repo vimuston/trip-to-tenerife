@@ -1,0 +1,391 @@
+[
+ {
+  "name": "bg_title",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, ",
+  "prompt": "Stardew Valley style, snowy night street in a Finnish town in cold autumn, a yellow taxi parked under a street lamp, northern lights green aurora in the starry sky, wooden houses with glowing windows, empty sky area at top for a logo"
+ },
+ {
+  "name": "bg_checkin",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, front view, ",
+  "prompt": "Stardew Valley style, inside a small Finnish airport check-in hall, long check-in counter with a screen, conveyor belt for bags, blue and white colours, wooden ceiling, big window with grey autumn light, empty floor in the foreground, no people"
+ },
+ {
+  "name": "bg_gate",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, front view, ",
+  "prompt": "Stardew Valley style, airport departure gate hall, rows of blue chairs, large window showing a passenger airplane parked at dusk, glass door to the jet bridge with a gate sign, empty floor in the foreground, no people"
+ },
+ {
+  "name": "bg_plane",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, ",
+  "prompt": "Stardew Valley style, inside an airplane cabin looking down the aisle, rows of blue seats, small oval windows with bright clouds and blue sky, overhead bins, empty seats, no people"
+ },
+ {
+  "name": "bg_arrival",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, ",
+  "prompt": "Stardew Valley style, bright sunny tarmac of Tenerife North airport, passenger airplane with its door open and airstairs in the foreground, palm trees, a dry volcanic mountain in the distance, deep blue sky, warm golden sunlight, no people"
+ },
+ {
+  "name": "bg_ending",
+  "gen": [
+   768,
+   1344
+  ],
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "view": "vertical portrait composition, ",
+  "prompt": "Stardew Valley style, golden sunset beach on Tenerife, palm trees, Mount Teide volcano on the horizon, calm sparkling ocean, warm orange pink sky, big sun, upper area empty for text, no people"
+ },
+ {
+  "name": "taxi_a",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   24,
+   40
+  ],
+  "colors": 20,
+  "prompt": "Stardew Valley style, a small yellow taxi car with a roof sign, seen from above at three-quarter angle, facing up-right, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "taxi_b",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   24,
+   40
+  ],
+  "colors": 20,
+  "prompt": "Stardew Valley style, a small white and teal taxi van with a roof sign, seen from above at three-quarter angle, facing up-right, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "airport_building",
+  "gen": [
+   1024,
+   768
+  ],
+  "out": [
+   96,
+   64
+  ],
+  "colors": 28,
+  "prompt": "Stardew Valley style, a small modern Finnish airport terminal building with a glass front, wooden canopy, a control tower and a red airline sign without readable text, snowy ground, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "tree_pine",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 16,
+  "prompt": "Stardew Valley style, a single tall dark green pine tree with light snow on branches, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "tree_birch",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 16,
+  "prompt": "Stardew Valley style, a single white-trunk birch tree with golden autumn leaves, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "tree_palm",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 16,
+  "prompt": "Stardew Valley style, a single tropical palm tree with green fronds, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "suitcase",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   16,
+   16
+  ],
+  "colors": 12,
+  "prompt": "Stardew Valley style, a single cute red rolling suitcase with a handle, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "boarding_pass",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   24,
+   16
+  ],
+  "colors": 12,
+  "prompt": "Stardew Valley style, a single white boarding pass ticket with blue stripe and a plane icon, no text, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "juice",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   16,
+   16
+  ],
+  "colors": 12,
+  "prompt": "Stardew Valley style, a single glass of dark purple blueberry juice with a straw, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "plane_side",
+  "gen": [
+   1024,
+   512
+  ],
+  "out": [
+   64,
+   24
+  ],
+  "colors": 20,
+  "view": "side view, ",
+  "prompt": "Stardew Valley style, a small white passenger airplane with blue tail, flying, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "sun",
+  "gen": [
+   768,
+   768
+  ],
+  "out": [
+   32,
+   32
+  ],
+  "colors": 10,
+  "view": "front view, ",
+  "prompt": "Stardew Valley style, a happy smiling cartoon sun with rays, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "a_adult1",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic mum, blonde ponytail, teal puffy winter jacket, jeans, boots, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "a_adult2",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic dad, short light brown hair, stubble, mustard yellow winter jacket, dark trousers, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "a_kid1",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic girl aged nine, blonde pigtails, red beanie, pink puffer jacket, leggings, small backpack, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "a_kid2",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic boy aged six, ginger hair, blue winter jacket, grey trousers, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "b_adult1",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic mum, brown bob hair, red winter jacket, dark jeans, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "b_adult2",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic dad, short blond hair, glasses, navy blue winter jacket, beige trousers, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "b_kid1",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic boy aged ten, light brown hair, green knitted hat, orange jacket, jeans, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "b_kid2",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a white-skinned Nordic girl aged six, platinum blonde braids, purple jacket, striped tights, teddy bear in hand, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "driver",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a friendly middle-aged white-skinned Finnish taxi driver, grey beard, flat cap, black jacket, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "clerk",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a cheerful white-skinned airline check-in clerk woman, navy uniform with a red scarf, hair in a bun, front view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "attendant",
+  "gen": [
+   832,
+   1216
+  ],
+  "out": [
+   32,
+   48
+  ],
+  "colors": 20,
+  "view": "front-facing full body standing, ",
+  "prompt": "Stardew Valley style, a cheerful white-skinned flight attendant, blue uniform, small hat, smiling, holding a drinks tray, front view, single subject only, nothing else around it, clean flat colours"
+ }
+]

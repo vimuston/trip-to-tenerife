@@ -1,0 +1,42 @@
+[
+ {
+  "name": "a_adult1",
+  "base": "a_adult1",
+  "prompt": "a white-skinned Nordic woman with blonde ponytail wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, white Bermuda shorts"
+ },
+ {
+  "name": "a_adult2",
+  "base": "a_adult2",
+  "prompt": "a white-skinned Nordic man with light brown hair and stubble wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, turquoise Bermuda shorts, palm print shirt"
+ },
+ {
+  "name": "a_kid1",
+  "base": "a_kid1",
+  "prompt": "a white-skinned Nordic boy aged ten with blonde hair wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, yellow palm tree t-shirt, blue swim shorts"
+ },
+ {
+  "name": "a_kid2",
+  "base": "a_kid2",
+  "prompt": "a small white-skinned Nordic boy aged six with ginger hair wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, striped shirt, orange shorts"
+ },
+ {
+  "name": "b_adult1",
+  "base": "b_adult1",
+  "prompt": "a white-skinned Nordic woman with brown bob hair wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, straw hat, floral shirt"
+ },
+ {
+  "name": "b_adult2",
+  "base": "b_adult2",
+  "prompt": "a white-skinned Nordic man with short blond hair and glasses wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, khaki Bermuda shorts, sun hat"
+ },
+ {
+  "name": "b_kid1",
+  "base": "b_kid1",
+  "prompt": "a white-skinned Nordic boy aged ten with light brown hair wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, tropical shirt, green board shorts, cap"
+ },
+ {
+  "name": "b_kid2",
+  "base": "b_kid2",
+  "prompt": "a small white-skinned Nordic boy aged six with platinum blonde hair wearing a colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, sunny holiday, yellow shirt, blue shorts, small sun hat"
+ }
+]

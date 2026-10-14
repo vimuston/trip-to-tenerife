@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Taksiseikkailu: kuvatesti</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;background:#0b0a16;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+#crt{position:relative;aspect-ratio:192/320;height:min(100vh,calc(100vw*320/192));border-radius:14px;overflow:hidden;
+  box-shadow:0 0 40px rgba(110,150,255,.25),0 0 0 6px #14122a}
+canvas{width:100%;height:100%;image-rendering:pixelated;display:block;filter:saturate(1.15) contrast(1.06)}
+#crt::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.22) 3px,rgba(0,0,0,0) 4px);mix-blend-mode:multiply}
+#crt::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(0,0,10,.55) 100%);box-shadow:inset 0 0 30px rgba(120,160,255,.12)}
+</style>
+</head>
+<body>
+<div id="crt"><canvas id="c" width="192" height="320"></canvas></div>
+<script>
+const W=192,H=320,cv=document.getElementById('c'),ctx=cv.getContext('2d');
+ctx.imageSmoothingEnabled=false;
+const C={ink:'#1c1a2a',snow:'#eef3fa',snow2:'#d3deee',snow3:'#b4c3dc',
+ g1:'#587238',g2:'#668440',g3:'#4b6330',gdry:'#7d8744',
+ asph:'#4a4f60',asph2:'#434858',asph3:'#555b6d',curb:'#97a0b6',curbd:'#5b6176',paveA:'#b3b9c8',paveB:'#a2a9ba',
+ roof1:'#3a5788',roof2:'#2e4676',roof3:'#4a6aa0',roof4:'#233860',
+ wall:'#d8dbe4',wall2:'#bdc3d1',wall3:'#eef0f5',stone:'#767180',stone2:'#5d596a',
+ win1:'#ffe79a',win2:'#ffc65a',win3:'#e89a3a',frame:'#f5f6fa',
+ door:'#7b4b2a',door2:'#5c3720',brick:'#8c4c3b',brick2:'#6c3427',
+ leaf1:'#e5922d',leaf2:'#f6c140',leaf3:'#b3601c',leaf4:'#7e3f14',bark:'#e9e6da',
+ pine1:'#245640',pine2:'#17402f',pine3:'#357a56',trunk:'#5b3b22',
+ taxi:'#f4c32c',taxi2:'#c8921a',taxi3:'#fff08a',glass:'#8fb6d4',glass2:'#5f87aa',red:'#d6403a',
+ skin:'#f2cfa9',skin2:'#d9a57a'};
+function n2(x,y){let h=(x*374761393+y*668265263)|0;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967295}
+function vn(x,y,s){const gx=Math.floor(x/s),gy=Math.floor(y/s),fx=x/s-gx,fy=y/s-gy;
+ const a=n2(gx,gy),b=n2(gx+1,gy),c=n2(gx,gy+1),d=n2(gx+1,gy+1),u=fx*fx*(3-2*fx),v=fy*fy*(3-2*fy);
+ return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v}
+// ---------- static background ----------
+const bg=document.createElement('canvas');bg.width=W;bg.height=H;const b=bg.getContext('2d');
+const R=(c,x,y,w,h,col)=>{c.fillStyle=col;c.fillRect(x|0,y|0,w|0,h|0)};
+const P=(c,x,y,col)=>R(c,x,y,1,1,col);
+function disc(c,cx,cy,r,col){c.fillStyle=col;for(let y=-r;y<=r;y++){const w=Math.floor(Math.sqrt(r*r-y*y+r*0.6));c.fillRect(cx-w,cy+y,2*w+1,1)}}
+function buildBG(){
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const n=n2(x,y);let col=n<.09?C.g3:n>.93?C.g2:(n>.6?C.g1:C.g1);
+  if(n2(x>>2,y>>2)>.82&&n>.5)col=C.gdry;
+  const s=vn(x+7,y+3,22)*.65+vn(x,y,9)*.35;
+  if(s>.6){ if(s>.66||((x+y)&1)==0){col=n<.15?C.snow2:(n>.96?C.snow3:C.snow);} }
+  P(b,x,y,col);}
+ // road & pavement
+ R(b,0,222,W,12,C.paveA);for(let x=0;x<W;x+=16)R(b,x,222,1,12,C.paveB);R(b,0,227,W,1,C.paveB);
+ R(b,0,234,W,1,C.curb);R(b,0,235,W,1,C.curbd);
+ R(b,0,236,W,54,C.asph);
+ for(let y=236;y<290;y++)for(let x=0;x<W;x++){const n=n2(x+50,y);if(n<.1)P(b,x,y,C.asph2);else if(n>.94)P(b,x,y,C.asph3)}
+ for(let x=6;x<W;x+=26)R(b,x,262,14,2,'#d9d8c8');
+ R(b,0,290,W,1,C.curbd);R(b,0,291,W,1,C.curb);
+ // snow on pavement/road verge
+ for(let x=0;x<W;x++){const h=vn(x,0,7);if(h>.55)R(b,x,222,1,2,C.snow);if(h>.7)R(b,x,236,1,1,C.snow2)}
+ // path
+ for(let y=134;y<224;y+=8)for(let x=84;x<108;x+=8){R(b,x,y,8,8,((x+y)>>3)&1?C.paveA:C.paveB);R(b,x,y,8,1,C.paveB);R(b,x,y,1,8,C.paveB)}
+ for(let y=134;y<224;y++)for(let x=82;x<110;x++){if((x<84||x>=108||n2(x,y)>.97)&&n2(x+3,y)>.55)P(b,x,y,C.snow)}
+ shadow(b);
+ // pines (back)
+ pine(b,176,70,.9);pine(b,12,56,.9);
+ house(b);
+ birch(b,22,128);
+ pine(b,172,132,1.15);pine(b,186,104,.95);
+ // bushes
+ for(const [x,y] of [[52,134],[66,136],[126,136],[140,134]]){disc(b,x,y,7,C.pine2);disc(b,x-1,y-1,6,C.pine1);P(b,x-2,y-3,C.pine3);P(b,x+2,y-2,C.pine3);P(b,x,y-4,C.pine3)}
+ // lamp post
+ R(b,26,190,2,34,'#2a2d3a');R(b,23,186,8,5,'#2a2d3a');R(b,24,187,6,3,C.win1);
+ // fence stubs
+ for(let x=118;x<150;x+=5){R(b,x,150,2,12,C.frame);R(b,x,150,2,1,C.snow)}R(b,116,154,36,2,C.frame);R(b,116,159,36,1,C.wall2);
+ for(let x=0;x<=56;x+=5){R(b,x,170,2,12,C.frame);R(b,x,170,2,1,C.snow)}R(b,0,174,58,2,C.frame);R(b,0,179,58,1,C.wall2);
+ // autumn leaves on ground
+ for(let i=0;i<46;i++){const x=Math.floor(n2(i,1)*60)+4,y=Math.floor(n2(i,2)*50)+120;P(b,x,y,i%3?C.leaf1:C.leaf3);if(i%4==0)P(b,x+1,y,C.leaf2)}
+}
+function shadow(c){c.fillStyle='rgba(20,24,60,.28)';
+ c.fillRect(46,134,100,5);c.fillRect(40,138,30,3);}
+function pine(c,cx,base,sc){const tiers=4;R(c,cx-2,base-6,4,8,C.trunk);
+ for(let t=0;t<tiers;t++){const top=base-8-(tiers-t)*0*0;const h=Math.round(15*sc),y0=base-8-(t+1)*Math.round(11*sc)+Math.round(8*sc),hw=Math.round((5+(tiers-t)*0+(t+1)*3.2)*sc);
+  for(let r=0;r<h;r++){const w=Math.max(1,Math.round(hw*(r+1)/h));
+   for(let x=-w;x<=w;x++){let col=x>w*.3?C.pine2:(x<-w*.4?C.pine3:C.pine1);if(n2(cx+x,y0+r+t*9)>.9)col=C.pine2;
+    if(r<3&&n2(cx+x,y0+r)>.38&&Math.abs(x)<w-1)col=(x>0?C.snow2:C.snow);P(c,cx+x,y0+r,col)}}}
+}
+function birch(c,x,base){
+ c.fillStyle='rgba(20,24,60,.28)';c.fillRect(x-6,base-1,26,5);
+ R(c,x,base-52,5,54,C.bark);R(c,x+4,base-52,1,54,C.snow3);
+ for(let y=base-50;y<base;y+=5){const k=n2(y,x)>.5;R(c,x+(k?0:2),y,k?3:2,1,C.ink)}
+ const blobs=[[x-9,base-60,11,C.leaf3],[x+14,base-58,11,C.leaf3],[x+2,base-72,12,C.leaf3],[x-6,base-72,9,C.leaf1],[x+14,base-70,9,C.leaf1],[x+4,base-60,10,C.leaf1],[x-2,base-78,8,C.leaf2]];
+ for(const [cx,cy,r,col] of blobs)disc(c,cx,cy,r,col);
+ for(let i=0;i<110;i++){const a=n2(i,5)*6.28,d=n2(i,6)*20;const px=Math.round(x+2+Math.cos(a)*d*.9),py=Math.round(base-66+Math.sin(a)*d*.8);
+  P(c,px,py,i%4?C.leaf2:C.leaf4)}
+}
+function win(c,x,y,w,h){R(c,x-1,y-1,w+2,h+2,C.frame);
+ for(let r=0;r<h;r++)R(c,x,y+r,w,1,r<h*.45?C.win1:(r<h*.8?C.win2:C.win3));
+ R(c,x+(w>>1)-0,y,1,h,C.frame);R(c,x,y+(h>>1),w,1,C.frame);
+ R(c,x,y,2,h-3,'#b24a63');R(c,x+w-2,y,2,h-3,'#b24a63');
+ R(c,x-2,y+h+1,w+4,2,C.wall2);R(c,x-2,y+h+3,w+4,1,'rgba(0,0,0,.18)')}
+function house(c){
+ // chimney
+ R(c,118,6,12,26,C.brick);for(let y=9;y<32;y+=4)R(c,118,y,12,1,C.brick2);R(c,116,4,16,3,'#4d4c58');R(c,116,3,16,1,C.snow);
+ // roof
+ for(let y=22;y<58;y++){const r=y-22,lx=Math.round(48-r*.28),rx=Math.round(144+r*.28);
+  for(let x=lx;x<=rx;x++){const row=(y-22)>>2,off=(row&1)*3;let col=C.roof1;
+   const m=(y-22)&3;if(m==0)col=C.roof3;else if(m==3)col=C.roof4;
+   if(((x+off)%7)==0&&m>0)col=C.roof2;
+   if(y<26&&n2(x,y)>(y-22)*.18+.18)col=n2(x+1,y)>.4?C.snow:C.snow2;
+   P(c,x,y,col)}}
+ R(c,40,56,112,2,'#2a2f4c');R(c,42,58,108,2,'rgba(30,36,70,.5)');
+ // wall
+ R(c,46,58,100,76,C.wall);
+ for(let y=60;y<128;y+=4){R(c,46,y,100,1,C.wall2);R(c,46,y+1,100,1,C.wall3)}
+ R(c,46,58,2,76,C.wall3);R(c,144,58,2,76,C.wall3);R(c,144,58,2,76,C.wall2);
+ R(c,46,126,100,8,C.stone);for(let x=46;x<146;x+=6)R(c,x+((x>>1)&2),126,1,8,C.stone2);R(c,46,126,100,1,C.stone2);
+ // windows
+ win(c,56,64,14,18);win(c,89,64,14,18);win(c,122,64,14,18);
+ win(c,56,96,14,20);win(c,122,96,14,20);
+ // door
+ R(c,88,102,16,32,C.frame);R(c,89,103,14,31,C.door);R(c,91,106,4,10,C.door2);R(c,97,106,4,10,C.door2);R(c,91,119,10,12,C.door2);
+ R(c,91,106,4,1,'#9a6439');R(c,97,106,4,1,'#9a6439');P(c,101,119,C.win2);P(c,101,120,C.win2);
+ R(c,86,134,20,4,'#8d8a98');R(c,86,134,20,1,C.snow2);R(c,84,138,24,2,'#5f5b6c');
+ // lantern
+ R(c,82,108,3,5,'#2a2d3a');R(c,83,109,1,3,C.win1);
+ // snow on sills/steps
+ for(const x of [54,87,120]) R(c,x,83,18,1,C.snow2);
+}
+// ---------- sprites ----------
+function shapes(c,list,ox,oy,dir){
+ for(const [x,y,w,h] of list)R(c,ox+x-1,oy+y-1,w+2,h+2,C.ink);
+}
+function person(c,x,y,o,t,walking){
+ const adult=o.kind==='a',bob=walking?(Math.floor(t*7)&1):0,leg=walking?(Math.floor(t*7)&1):0;
+ const fy=y-bob; // feet y
+ const S=adult?{h:22}:{h:17};
+ const sh=[];
+ const add=(a,col)=>sh.push([a,col]);
+ if(adult){
+  add([-4,-22,8,4],o.hair);add([-3,-19,6,5],C.skin);
+  if(o.long){add([-5,-21,2,9],o.hair);add([3,-21,2,9],o.hair)}
+  if(o.glasses){}
+  add([-5,-14,10,9],o.jacket);add([-5,-6,10,1],o.jdark);
+  add([-7,-13,2,8],o.jacket);add([5,-13,2,8],o.jacket);add([-7,-5,2,2],C.skin);add([5,-5,2,2],C.skin);
+  add([-4,-5,3,4+(leg?1:0)],o.pants);add([1,-5,3,4+(leg?0:1)],o.pants);
+  add([-4,-1+(leg?1:0),3,1],C.ink);add([1,-1+(leg?0:1),3,1],C.ink);
+ }else{
+  add([-4,-17,8,5],o.hat||o.hair);if(o.hat)add([-4,-13,8,1],o.hair);
+  add([-3,-13,6,4],C.skin);
+  add([-4,-9,8,6],o.jacket);add([-4,-4,8,1],o.jdark);
+  add([-6,-8,2,5],o.jacket);add([4,-8,2,5],o.jacket);
+  add([-3,-3,3,3+(leg?1:0)],o.pants);add([0,-3,3,3+(leg?0:1)],o.pants);
+ }
+ for(const [a] of sh)R(c,x+a[0]-1,fy+a[1]-1,a[2]+2,a[3]+2,C.ink);
+ for(const [a,col] of sh)R(c,x+a[0],fy+a[1],a[2],a[3],col);
+ // face
+ if(adult){P(c,x-2,fy-17,C.ink);P(c,x+1,fy-17,C.ink);if(o.glasses)R(c,x-3,fy-18,6,1,'#3a3a4a');if(o.beard)R(c,x-2,fy-15,4,1,o.hair)}
+ else{P(c,x-2,fy-11,C.ink);P(c,x+1,fy-11,C.ink);P(c,x-2,fy-9,C.skin2)}
+ if(o.pom)R(c,x-1,fy-19,3,2,'#ffffff');
+}
+function suitcase(c,x,y,col){R(c,x-1,y-9,8,10,C.ink);R(c,x,y-8,6,8,col);R(c,x,y-5,6,1,'rgba(0,0,0,.25)');R(c,x+2,y-12,2,3,C.ink);R(c,x,y+1,2,1,C.ink);R(c,x+4,y+1,2,1,C.ink)}
+function taxi(c,x,y,t){
+ // 40x19, facing right, side view (y = ground contact line)
+ R(c,x-1,y-10,42,10,C.ink);R(c,x+2,y-16,28,8,C.ink);R(c,x+11,y-19,14,4,C.ink);
+ R(c,x,y-9,40,8,C.taxi);R(c,x,y-4,40,3,C.taxi2);R(c,x+3,y-15,26,7,C.taxi);
+ R(c,x+5,y-14,10,6,C.glass);R(c,x+17,y-14,10,6,C.glass);R(c,x+5,y-14,10,1,C.glass2);R(c,x+17,y-14,10,1,C.glass2);R(c,x+16,y-15,1,7,C.taxi2);
+ R(c,x+12,y-18,12,3,C.ink);R(c,x+13,y-17,10,2,C.taxi3);
+ R(c,x,y-9,40,1,C.taxi3);
+ R(c,x+36,y-8,3,3,C.taxi3);R(c,x+1,y-7,3,2,C.red);
+ R(c,x+6,y-6,10,1,C.taxi2);R(c,x+28,y-7,1,5,C.taxi2);
+ for(const wx of [x+7,x+29]){disc(c,wx+3,y-1,4,C.ink);disc(c,wx+3,y-1,3,'#2c2c3a');P(c,wx+3,y-1,'#9aa0b4');P(c,wx+2,y-1,'#9aa0b4')}
+ R(c,x+3,y,36,1,'rgba(10,10,30,.35)');
+}
+// ---------- text & UI ----------
+const FONT='8px "Press Start 2P", monospace';
+function box(c,x,y,w,h){R(c,x,y,w,h,'#f4f4ff');R(c,x+1,y+1,w-2,h-2,'#0c1458');
+ for(let r=0;r<h-4;r++)R(c,x+2,y+2+r,w-4,1,r<(h-4)/2?'#2438b8':'#142088');
+ R(c,x+2,y+2,w-4,1,'#6c82ff');
+ for(const [dx,dy] of [[0,0],[w-1,0],[0,h-1],[w-1,h-1]])P(c,x+dx,y+dy,'#000000');}
+function wrap(txt,max){const words=txt.split(' ');const out=[];let l='';for(const w of words){if((l+' '+w).trim().length>max){out.push(l);l=w}else l=(l+' '+w).trim()}out.push(l);return out}
+const LINES=[
+ {who:'TAKSIKUSKI',txt:'Hei! Taksi Oulun lentokentälle on valmis!',t:0.6},
+ {who:'ÄITI A',txt:'Hienoa! Laukut kyytiin, lapset!',t:5.2},
+ {who:'LAPSI A2',txt:'Mennäänkö oikeasti Teneriffalle?!',t:8.8},
+ {who:'TAKSIKUSKI',txt:'Kyllä vaan! Hypätkää kyytiin!',t:11.6}];
+const CYCLE=15;
+const FAM=[
+ {kind:'a',hair:'#e8c765',long:true,jacket:'#2fa39a',jdark:'#1f7a74',pants:'#33405e',delay:0,fx:100,name:'mum'},
+ {kind:'k',hair:'#f0d27a',hat:'#d6403a',pom:true,jacket:'#ee7fa8',jdark:'#c35582',pants:'#3a3a5a',delay:1.0,fx:112,name:'k1'},
+ {kind:'k',hair:'#d9732b',jacket:'#3a6fd0',jdark:'#264c9a',pants:'#4a4a62',delay:1.9,fx:123,name:'k2'},
+ {kind:'a',hair:'#8a6a45',beard:true,jacket:'#e2a823',jdark:'#b0801a',pants:'#2d3550',delay:2.8,fx:84,name:'dad'}];
+const PATH=(f)=>[[96,142],[96,214],[f.fx,224]];
+function pathPos(p,d){let rem=d;for(let i=0;i<p.length-1;i++){const a=p[i],b=p[i+1],L=Math.hypot(b[0]-a[0],b[1]-a[1]);if(rem<=L){const k=rem/L;return [a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,true]}rem-=L}return [p[p.length-1][0],p[p.length-1][1],false]}
+// ---------- dynamic frame ----------
+const flakes=Array.from({length:46},(_,i)=>({x:n2(i,9)*W,y:n2(i,10)*H,s:8+n2(i,11)*14,p:n2(i,12)*6}));
+const ov=document.createElement('canvas');ov.width=W;ov.height=H;const o2=ov.getContext('2d');
+function glow(x,y,r,a){for(let k=0;k<4;k++){o2.globalCompositeOperation='destination-out';o2.fillStyle=`rgba(0,0,0,${a})`;disc(o2,x,y,Math.round(r*(1-k*.22)),`rgba(0,0,0,${a})`)}o2.globalCompositeOperation='source-over'}
+let start=performance.now();
+function frame(now){
+ const T=((now-start)/1000)%CYCLE,t=(now-start)/1000;
+ ctx.drawImage(bg,0,0);
+ // taxi (slight idle shake) + exhaust
+ const tx=84,ty=257+(Math.floor(t*6)&1?0:0);
+ taxi(ctx,tx,ty,t);
+ for(let i=0;i<3;i++){const k=((t*.8+i/3)%1);disc(ctx,tx-3-k*9,ty-3-k*8,1+Math.floor(k*2),`rgba(230,235,245,${.55*(1-k)})`)}
+ // actors sorted by y
+ const acts=[];
+ for(const f of FAM){const d=Math.max(0,T-f.delay)*20;const p=pathPos(PATH(f),d);acts.push({f,x:p[0],y:p[1],walk:p[2]&&T>f.delay})}
+ acts.sort((a,b)=>a.y-b.y);
+ for(const a of acts){
+  const arrived=!a.walk&&T>a.f.delay;let yy=a.y;
+  if(arrived&&T>8.5&&a.f.kind==='k')yy-=Math.abs(Math.sin((T-8.5)*5+a.f.delay))*3;
+  if(a.f.kind==='a'&&(a.walk||arrived))suitcase(ctx,a.x+8,a.y,a.f.name==='mum'?'#d6403a':'#3a6fd0');
+  if(T<a.f.delay&&a.f.kind){continue}
+  person(ctx,a.x,yy,a.f,t,a.walk);
+ }
+ // dusk overlay with stepped glows
+ o2.globalCompositeOperation='source-over';o2.clearRect(0,0,W,H);o2.fillStyle='rgba(18,20,64,.46)';o2.fillRect(0,0,W,H);
+ const flick=.1+.015*Math.sin(t*3);
+ for(const [x,y] of [[63,73],[96,73],[129,73],[63,106],[129,106]])glow(x,y,20,.16);
+ glow(96,118,22,.2);glow(83,111,12,.2);glow(27,189,34,.2);
+ glow(tx+40,ty-6,28,.15);
+ ctx.drawImage(ov,0,0);
+ // warm additive glow
+ ctx.globalCompositeOperation='lighter';
+ for(const [x,y,r,a] of [[63,73,13,.07],[96,73,13,.07],[129,73,13,.07],[63,106,14,.07],[129,106,14,.07],[27,189,22,.08],[83,111,9,.1]])
+  for(let k=0;k<3;k++)disc(ctx,x,y,Math.round(r*(1-k*.3)),`rgba(255,170,60,${a})`);
+ ctx.globalCompositeOperation='source-over';
+ // snow
+ for(const f of flakes){const yy=(f.y+t*f.s)%H,xx=(f.x+Math.sin(t*.9+f.p)*5+W)%W;P(ctx,xx,yy,f.s>16?C.snow:C.snow2);if(f.s>18)P(ctx,xx+1,yy,C.snow2)}
+ // HUD
+ box(ctx,4,4,96,22);ctx.font=FONT;ctx.fillStyle='#ffffff';ctx.textBaseline='top';
+ ctx.fillText('TAKSI 1/2',12,8);ctx.fillStyle='#ffd54a';
+ const n=FAM.filter(f=>T-f.delay>5).length;ctx.fillText('KYYTI '+n+'/4',12,17);
+ // dialogue
+ let cur=null;for(const L of LINES)if(T>=L.t)cur=L;
+ if(cur){const el=T-cur.t,shown=Math.min(cur.txt.length,Math.floor(el*22));
+  box(ctx,4,262,184,54);ctx.font=FONT;ctx.fillStyle='#ffd54a';ctx.fillText(cur.who,12,267);
+  ctx.fillStyle='#ffffff';const ls=wrap(cur.txt.slice(0,shown)+(shown<cur.txt.length?'':''),21);
+  const full=wrap(cur.txt,21);let used=0;
+  full.forEach((l,i)=>{const part=cur.txt.slice(0,shown).length;const start=full.slice(0,i).join(' ').length+(i?1:0);
+   const s=Math.max(0,Math.min(l.length,part-start));ctx.fillText(l.slice(0,s),12,279+i*11)});
+  if(shown>=cur.txt.length&&Math.floor(t*2)&1){ctx.fillStyle='#ffffff';ctx.fillRect(176,306,5,3);ctx.fillRect(177,309,3,1)}
+ }
+ requestAnimationFrame(frame)}
+buildBG();
+const go=()=>requestAnimationFrame(frame);
+(document.fonts&&document.fonts.load('8px "Press Start 2P"').then(go,go))||go();
+setTimeout(()=>{},0);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+[
+ {
+  "name": "b_kid2",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "gen": [
+   832,
+   1216
+  ],
+  "prompt": "Stardew Valley style, a small white-skinned Nordic boy aged six, platinum blonde hair, yellow raincoat jacket, blue trousers, red boots, full body standing, cute, front view, single subject only, nothing else around it, clean flat colours, plain white background"
+ },
+ {
+  "name": "rental_car",
+  "out": [
+   26,
+   42
+  ],
+  "colors": 24,
+  "gen": [
+   1024,
+   1024
+  ],
+  "prompt": "Stardew Valley style, a small white hatchback rental car seen from directly above, front pointing up, light grey windows, simple, front view, single subject only, nothing else around it, clean flat colours, plain white background"
+ }
+]

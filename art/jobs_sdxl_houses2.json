@@ -1,0 +1,20 @@
+[
+ {
+  "name": "house_a",
+  "out": [
+   96,
+   96
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a two-storey Finnish wooden house, light grey painted clapboard walls, dark navy blue roof, white window frames with warm yellow lit windows, brown door, one white birch tree with orange leaves beside it, snow patches on the grass, cold autumn evening, front view, single building only, nothing else around it, white background"
+ },
+ {
+  "name": "house_b",
+  "out": [
+   96,
+   96
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a small single-storey Finnish house, red-orange painted wooden walls, dark red-brown roof, warm yellow lit windows, gravel yard, tall dark green pine trees around it, front view, single building only, no items, white background"
+ }
+]

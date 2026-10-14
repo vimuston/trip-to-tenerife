@@ -1,0 +1,504 @@
+[
+ {
+  "name": "a_kid1",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white-skinned Nordic boy aged ten, blonde hair, red beanie, light blue puffer jacket, jeans, small backpack, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "b_adult1",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white-skinned Nordic mum, brown bob hair, red winter jacket, dark jeans, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "b_adult2",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white-skinned Nordic dad, short blond hair, glasses, navy blue winter jacket, beige trousers, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "b_kid1",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white-skinned Nordic boy aged ten, light brown hair, green knitted hat, orange jacket, jeans, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "b_kid2",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white-skinned Nordic boy aged six, platinum blonde hair, purple jacket, teddy bear in hand, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "clerk",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a cheerful white-skinned airline check-in clerk woman, navy uniform with a red scarf, hair in a bun, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "attendant",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a cheerful white-skinned flight attendant woman, blue uniform and small hat, smiling, holding a drinks tray, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "rental_agent",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a friendly Spanish car rental agent man in a red polo shirt and name badge, holding car keys, full body standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "taxi_b",
+  "out": [
+   24,
+   40
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a small white and teal taxi van seen from directly above, roof sign, front pointing up, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "rental_car",
+  "out": [
+   26,
+   42
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a small red hatchback rental car seen from directly above, front pointing up, sunroof, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "plane_side",
+  "out": [
+   96,
+   40
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white passenger airplane with a blue tail seen from the side, parked, windows, wheels, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "baggage_tractor",
+  "out": [
+   40,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a small airport baggage tractor pulling two luggage carts, seen from the side, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "checkin_counter",
+  "out": [
+   64,
+   40
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport check-in desk with a conveyor belt scale and a computer screen, blue and white, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "baggage_belt",
+  "out": [
+   64,
+   32
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport baggage claim carousel conveyor belt with suitcases on it, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "luggage_cart",
+  "out": [
+   24,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport luggage trolley cart with two suitcases, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "airport_bench",
+  "out": [
+   40,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a row of blue airport waiting chairs, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "departure_sign",
+  "out": [
+   48,
+   32
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a hanging airport departure board sign with colourful rows of light and a plane icon, no readable text, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "gate_desk",
+  "out": [
+   48,
+   32
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport boarding gate desk with a small screen and a stanchion belt barrier, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "jet_bridge",
+  "out": [
+   64,
+   40
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport jet bridge boarding tunnel connected to a plane door, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "control_tower",
+  "out": [
+   32,
+   64
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, an airport control tower with glass top, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1216
+  ]
+ },
+ {
+  "name": "airport_plant",
+  "out": [
+   16,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a green potted plant in a modern airport, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1024
+  ]
+ },
+ {
+  "name": "vending_machine",
+  "out": [
+   20,
+   28
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a colourful snack and drink vending machine, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1024
+  ]
+ },
+ {
+  "name": "airbnb_house",
+  "out": [
+   96,
+   80
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a whitewashed Canarian villa with a terracotta tile roof, blue shutters, a palm tree, bougainvillea flowers, a small terrace, sunny, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   1024
+  ]
+ },
+ {
+  "name": "pool_lounger",
+  "out": [
+   32,
+   20
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a white sun lounger beach chair with a blue towel, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "pool_float",
+  "out": [
+   24,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a pink flamingo pool float ring, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "cactus",
+  "out": [
+   16,
+   24
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a tall green saguaro cactus with a small pink flower, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   832,
+   1024
+  ]
+ },
+ {
+  "name": "white_house",
+  "out": [
+   48,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a small whitewashed Spanish village house with a flat terracotta roof and blue door, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "teide",
+  "out": [
+   96,
+   48
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, the volcano Mount Teide, brown and grey rocky peak with a little white snow cap, wide base, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1216,
+   832
+  ]
+ },
+ {
+  "name": "goat",
+  "out": [
+   20,
+   16
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a cute small brown and white goat standing, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "key",
+  "out": [
+   16,
+   16
+  ],
+  "colors": 24,
+  "prompt": "Stardew Valley style, a golden house key with a red tag, front view, single subject only, nothing else around it, clean flat colours",
+  "gen": [
+   1024,
+   1024
+  ]
+ },
+ {
+  "name": "bg_checkin",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, inside a small airport check-in hall, wooden ceiling, blue floor, large windows with grey light, empty floor, no people, vertical composition"
+ },
+ {
+  "name": "bg_gate",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, airport departure gate hall, rows of blue seats, large window showing a parked plane at dusk, empty floor, no people, vertical composition"
+ },
+ {
+  "name": "bg_plane",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, inside an airplane cabin looking down the aisle, rows of blue seats, small windows with bright clouds, no people, vertical composition"
+ },
+ {
+  "name": "bg_arrival",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, bright sunny tarmac of a Canary Islands airport, passenger airplane with airstairs, palm trees, dry volcanic mountain, deep blue sky, warm golden sunlight, no people, vertical composition"
+ },
+ {
+  "name": "bg_rental",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, sunny airport arrivals hall in Spain with a car rental desks row, palm plant, glass doors showing blue sky and palms outside, empty floor, no people, vertical composition"
+ },
+ {
+  "name": "bg_airbnb",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, terrace in front of a whitewashed Spanish villa at golden hour, terracotta tiles, a wooden door, bougainvillea, palm trees, empty ground, no people, vertical composition"
+ },
+ {
+  "name": "bg_pool",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, top-down three-quarter view of a villa swimming pool with turquoise water, sun loungers around, palm trees, sunset orange light, empty, no people, vertical composition"
+ },
+ {
+  "name": "bg_ending",
+  "out": [
+   180,
+   320
+  ],
+  "sprite": false,
+  "colors": 32,
+  "gen": [
+   768,
+   1344
+  ],
+  "prompt": "Stardew Valley style, golden sunset beach on Tenerife with palm trees, volcano Mount Teide on the horizon, calm sparkling ocean, big sun, upper area empty, no people, vertical composition"
+ }
+]

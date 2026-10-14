@@ -1,0 +1,28 @@
+[
+ {
+  "name": "b_adult1",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "gen": [
+   832,
+   1216
+  ],
+  "prompt": "Stardew Valley style, a white-skinned Nordic woman mum with a brown bob haircut, red winter jacket, dark jeans, boots, front view, single subject only, nothing else around it, clean flat colours, plain white background, full body standing"
+ },
+ {
+  "name": "b_adult1_hol",
+  "out": [
+   32,
+   48
+  ],
+  "colors": 24,
+  "gen": [
+   832,
+   1216
+  ],
+  "prompt": "Stardew Valley style, a white-skinned Nordic woman with a brown bob haircut, straw sun hat, colourful Hawaiian flower shirt, Bermuda shorts, flip-flops, sunglasses, front view, single subject only, nothing else around it, clean flat colours, plain white background, full body standing"
+ }
+]

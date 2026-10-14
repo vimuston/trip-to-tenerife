@@ -1,0 +1,1 @@
+window.ART_MANIFEST = window.ART_MANIFEST || {}; window.ART_MANIFEST["ff"] = ["a_adult1", "a_adult2", "a_kid1", "a_kid2", "airport_building", "bg_title", "driver", "house_a", "taxi_a", "tree_birch", "tree_palm", "tree_pine"];

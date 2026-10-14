@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TitleNeon test</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#050210;display:flex;justify-content:center;align-items:center;min-height:100vh}
+#wrap{position:relative;width:540px;height:960px}
+canvas{width:540px;height:960px;image-rendering:pixelated;display:block}
+#crt{position:absolute;inset:0;pointer-events:none;
+ background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.28) 3px);
+ box-shadow:inset 0 0 60px rgba(0,0,0,.6)}
+</style></head><body>
+<div id="wrap"><canvas id="c" width="180" height="320"></canvas><div id="crt"></div></div>
+<script src="title_neon.js"></script>
+<script>
+var cv=document.getElementById('c'),ctx=cv.getContext('2d'),down=-1;
+var btns=[[30,216,120,24,'START'],[30,248,120,24,'OPTIONS'],[30,280,120,24,'ABOUT']];
+function pos(e){var r=cv.getBoundingClientRect();return [(e.clientX-r.left)*180/r.width,(e.clientY-r.top)*320/r.height];}
+cv.addEventListener('pointerdown',function(e){var p=pos(e);down=-1;
+ for(var i=0;i<3;i++){var b=btns[i];if(p[0]>=b[0]&&p[0]<b[0]+b[2]&&p[1]>=b[1]&&p[1]<b[1]+b[3])down=i;}});
+window.addEventListener('pointerup',function(){down=-1;});
+function frame(ms){var t=ms/1000;TitleNeon.draw(ctx,180,320,t);
+ for(var i=0;i<3;i++){var b=btns[i];TitleNeon.button(ctx,b[0],b[1],b[2],b[3],b[4],down===i,t);}
+ requestAnimationFrame(frame);}
+requestAnimationFrame(frame);
+</script></body></html>

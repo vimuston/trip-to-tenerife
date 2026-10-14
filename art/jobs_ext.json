@@ -1,0 +1,41 @@
+[
+ {
+  "name": "airport_terminal",
+  "out": [
+   144,
+   64
+  ],
+  "colors": 24,
+  "gen": [
+   1216,
+   832
+  ],
+  "prompt": "Stardew Valley style, a modern small Finnish airport terminal building front view, long glass facade with doors, flat grey roof, blue sign band without text, a control tower on the right side, light snow on the roof, grey concrete forecourt, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "plane_apron",
+  "out": [
+   72,
+   64
+  ],
+  "colors": 24,
+  "gen": [
+   1024,
+   1024
+  ],
+  "prompt": "Stardew Valley style, a white passenger airplane with blue tail seen from directly above, wings spread, parked, top-down view, single subject only, nothing else around it, clean flat colours"
+ },
+ {
+  "name": "plane_fly",
+  "out": [
+   96,
+   40
+  ],
+  "colors": 24,
+  "gen": [
+   1216,
+   832
+  ],
+  "prompt": "Stardew Valley style, a white passenger airplane with a blue tail fin seen exactly from the side, level, nose pointing right, windows in a row, landing gear tucked, single subject only, nothing else around it, clean flat colours"
+ }
+]
